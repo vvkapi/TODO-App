@@ -8,5 +8,5 @@ spring:
     url: 'jdbc:h2:file:./AppDB'
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: validate
 task.allowMultipleTaskFromTemplate: false
