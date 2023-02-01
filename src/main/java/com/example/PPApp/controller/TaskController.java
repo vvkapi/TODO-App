@@ -1,8 +1,10 @@
 package com.example.PPApp.controller;
 
+import com.electronwill.nightconfig.core.conversion.Path;
 import com.example.PPApp.model.Task;
 import com.example.PPApp.model.TaskRepository;
 import jakarta.validation.Valid;
+import org.apache.coyote.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Pageable;
@@ -34,4 +36,26 @@ class TaskController {
         logger.warn("Exposing all the tasks!");
         return ResponseEntity.ok(repository.findAll());
     }
+
+    @GetMapping("/tasks/{id}")
+    ResponseEntity<Task> findById(@PathVariable int id) {
+        return repository.findById(id)
+                .map(task -> ResponseEntity.ok(task))
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+
+    @PutMapping("/tasks/{id}")
+    ResponseEntity<?> updateTask(@PathVariable int id, @RequestBody @Valid Task toUpdate) {
+        if (!repository.existsById(id)) {
+            return ResponseEntity.notFound().build();
+        }
+        repository.findById(id)
+                .ifPresent(task -> {
+                    task.updateFrom(toUpdate);
+                    repository.save(task);
+                });
+        return ResponseEntity.noContent().build();
+    }
+
 }
