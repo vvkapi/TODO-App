@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 //whitelist
+
 public interface TaskRepository {
     List<Task> findAll();
 
@@ -18,8 +19,9 @@ public interface TaskRepository {
 
     boolean existsById(Integer id);
 
+    boolean existsByDoneIsFalseAndGroup_Id(Integer groupId);
+
     List<Task> findByDone(boolean done);
 
     Task save(Task entity);
-
 }
