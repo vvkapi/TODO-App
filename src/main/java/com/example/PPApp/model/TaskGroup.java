@@ -5,25 +5,24 @@ import jakarta.validation.constraints.NotBlank;
 import org.springframework.cglib.core.Local;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
-@Table(name = "tasks")
-public class Task extends Audit{
+@Table(name = "tasks_groups")
+public class TaskGroup{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @NotBlank(message="Tasks description can't be empty!")
+    @NotBlank(message="Tasks group's description can't be empty!")
     private String description;
     private boolean done;
-    private LocalDateTime deadline;
-
     @Embedded
     private Audit audit = new Audit();
-    @ManyToOne
-    @JoinColumn(name = "task_group_id")
-    private TaskGroup group;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "group")
+    private Set<Task> tasks;
 
-    Task(){
+
+    TaskGroup(){
     }
 
     public int getId() {
@@ -48,20 +47,7 @@ public class Task extends Audit{
 
     public void setDone(boolean done) { this.done = done; }
 
-    public LocalDateTime getDeadline() { return deadline; }
+    public Set<Task> getTasks() { return tasks; }
 
-    void setDeadline(final LocalDateTime deadline) { this.deadline = deadline; }
-
-    TaskGroup getGroup() { return group; }
-
-    void setGroup(final TaskGroup group) { this.group = group; }
-
-    public void updateFrom(final Task source) {
-         description = source.description;;
-         done = source.done;
-         deadline = source.deadline;
-         group = source.group;
-
-    }
-
+    void setTasks(final Set<Task> tasks) { this.tasks = tasks; }
 }
