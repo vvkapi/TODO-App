@@ -59,10 +59,10 @@ public class Task {
     }
 
     public void updateFrom(final Task source) {
-         description = source.description;;
-         done = source.done;
-         deadline = source.deadline;
-         group = source.group;
+        description = source.description;;
+        done = source.done;
+        deadline = source.deadline;
+        group = source.group;
     }
 
 }
