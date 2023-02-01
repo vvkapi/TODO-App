@@ -7,7 +7,7 @@ import jakarta.persistence.PreUpdate;
 import java.time.LocalDateTime;
 
 @Embeddable
- public class Audit {
+class Audit {
     private LocalDateTime createdOn;
     private LocalDateTime updatedOn;
 
@@ -17,7 +17,8 @@ import java.time.LocalDateTime;
     }
 
     @PreUpdate
-    void preMerge() {
+    void PreMerge(){
         updatedOn = LocalDateTime.now();
     }
 }
+

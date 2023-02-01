@@ -2,13 +2,12 @@ package com.example.PPApp.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import org.springframework.cglib.core.Local;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tasks")
-public class Task extends Audit{
+public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -16,7 +15,6 @@ public class Task extends Audit{
     private String description;
     private boolean done;
     private LocalDateTime deadline;
-
     @Embedded
     private Audit audit = new Audit();
     @ManyToOne
@@ -52,16 +50,19 @@ public class Task extends Audit{
 
     void setDeadline(final LocalDateTime deadline) { this.deadline = deadline; }
 
-    TaskGroup getGroup() { return group; }
+    TaskGroup getGroup() {
+        return group;
+    }
 
-    void setGroup(final TaskGroup group) { this.group = group; }
+    void setGroup(final TaskGroup group) {
+        this.group = group;
+    }
 
     public void updateFrom(final Task source) {
          description = source.description;;
          done = source.done;
          deadline = source.deadline;
          group = source.group;
-
     }
 
 }

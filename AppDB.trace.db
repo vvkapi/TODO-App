@@ -172,3 +172,19 @@ Wrong user name or password [28000-214]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:510)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
 	... 50 more
+2023-02-01 18:56:09 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Błąd składniowy w wyrażeniu SQL "DROP [*]COLUMN TASK_GROUP_ID"; oczekiwano "TABLE, INDEX, USER, SEQUENCE, CONSTANT, TRIGGER, VIEW, ROLE, ALIAS, SCHEMA, ALL OBJECTS, DOMAIN, TYPE, DATATYPE, AGGREGATE, SYNONYM"
+Syntax error in SQL statement "DROP [*]COLUMN TASK_GROUP_ID"; expected "TABLE, INDEX, USER, SEQUENCE, CONSTANT, TRIGGER, VIEW, ROLE, ALIAS, SCHEMA, ALL OBJECTS, DOMAIN, TYPE, DATATYPE, AGGREGATE, SYNONYM"; SQL statement:
+DROP COLUMN TASK_GROUP_ID [42001-214]
+2023-02-01 18:56:16 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Błąd składniowy w wyrażeniu SQL "DROP [*]COLUMN TASK_GROUP_ID"; oczekiwano "TABLE, INDEX, USER, SEQUENCE, CONSTANT, TRIGGER, VIEW, ROLE, ALIAS, SCHEMA, ALL OBJECTS, DOMAIN, TYPE, DATATYPE, AGGREGATE, SYNONYM"
+Syntax error in SQL statement "DROP [*]COLUMN TASK_GROUP_ID"; expected "TABLE, INDEX, USER, SEQUENCE, CONSTANT, TRIGGER, VIEW, ROLE, ALIAS, SCHEMA, ALL OBJECTS, DOMAIN, TYPE, DATATYPE, AGGREGATE, SYNONYM"; SQL statement:
+DROP COLUMN TASK_GROUP_ID [42001-214]
+2023-02-01 19:08:07 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Błąd składniowy w wyrażeniu SQL "create table task_groups(\000d\000a    id int primary key auto_increment,\000d\000a    description varchar(100) not null\000d\000a    [*]done bit\000d\000a    )"; oczekiwano "AS, DEFAULT, GENERATED, ON UPDATE, AUTO_INCREMENT, DEFAULT ON NULL, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, NULL, CHECK, REFERENCES, AUTO_INCREMENT, ,, )"
+Syntax error in SQL statement "create table task_groups(\000d\000a    id int primary key auto_increment,\000d\000a    description varchar(100) not null\000d\000a    [*]done bit\000d\000a    )"; expected "AS, DEFAULT, GENERATED, ON UPDATE, AUTO_INCREMENT, DEFAULT ON NULL, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, NULL, CHECK, REFERENCES, AUTO_INCREMENT, ,, )"; SQL statement:
+create table task_groups(
+    id int primary key auto_increment,
+    description varchar(100) not null
+    done bit
+    ) [42001-214]

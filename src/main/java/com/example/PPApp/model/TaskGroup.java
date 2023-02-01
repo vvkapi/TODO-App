@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
-@Table(name = "tasks_groups")
+@Table(name = "task_groups")
 public class TaskGroup{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,8 +16,6 @@ public class TaskGroup{
     @NotBlank(message="Tasks group's description can't be empty!")
     private String description;
     private boolean done;
-    @Embedded
-    private Audit audit = new Audit();
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "group")
     private Set<Task> tasks;
 
