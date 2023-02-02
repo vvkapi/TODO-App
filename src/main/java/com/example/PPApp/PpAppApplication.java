@@ -11,7 +11,7 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 @SpringBootApplication
 public class PpAppApplication {
 
-	public static void main(String[] args) {
+	public  static void main(String[] args) {
 
 		SpringApplication.run(PpAppApplication.class, args);
 	}
@@ -20,6 +20,5 @@ public class PpAppApplication {
 	Validator validator() {
 		return new LocalValidatorFactoryBean();
 	}
-
 
 }
