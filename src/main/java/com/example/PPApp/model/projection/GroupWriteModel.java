@@ -2,13 +2,24 @@ package com.example.PPApp.model.projection;
 
 import com.example.PPApp.model.Project;
 import com.example.PPApp.model.TaskGroup;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class GroupWriteModel {
+    @NotBlank(message="Tasks group's description can't be empty!")
     private String description;
-    private Set<GroupTaskWriteModel> tasks;
+    @Valid
+    private List<GroupTaskWriteModel> tasks = new ArrayList<>();
+
+    public GroupWriteModel() {
+        tasks.add(new GroupTaskWriteModel());
+    }
 
     public String getDescription() {
         return description;
@@ -18,11 +29,11 @@ public class GroupWriteModel {
         this.description = description;
     }
 
-    public Set<GroupTaskWriteModel> getTasks() {
+    public List<GroupTaskWriteModel> getTasks() {
         return tasks;
     }
 
-    public void setTasks(final Set<GroupTaskWriteModel> tasks) {
+    public void setTasks(final List<GroupTaskWriteModel> tasks) {
         this.tasks = tasks;
     }
 
