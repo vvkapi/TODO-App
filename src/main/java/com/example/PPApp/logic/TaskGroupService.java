@@ -1,6 +1,7 @@
 package com.example.PPApp.logic;
 
 import com.example.PPApp.TaskConfigurationProperties;
+import com.example.PPApp.model.Project;
 import com.example.PPApp.model.TaskGroup;
 import com.example.PPApp.model.TaskGroupRepository;
 import com.example.PPApp.model.TaskRepository;
@@ -27,7 +28,11 @@ public class TaskGroupService {
     }
 
     public GroupReadModel createGroup(GroupWriteModel source) {
-        TaskGroup result = repository.save(source.toGroup());
+        return createGroup(source, null);
+    }
+
+    GroupReadModel createGroup(final GroupWriteModel source, final Project project) {
+        TaskGroup result = repository.save(source.toGroup(project));
         return new GroupReadModel(result);
     }
 
@@ -46,4 +51,5 @@ public class TaskGroupService {
         result.setDone(!result.isDone());
         repository.save(result);
     }
+
 }

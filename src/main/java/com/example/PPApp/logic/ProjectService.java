@@ -5,6 +5,7 @@ import com.example.PPApp.model.*;
 import com.example.PPApp.model.projection.GroupReadModel;
 import com.example.PPApp.model.projection.GroupTaskWriteModel;
 import com.example.PPApp.model.projection.GroupWriteModel;
+import com.example.PPApp.model.projection.ProjectWriteModel;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -27,8 +28,8 @@ public class ProjectService {
         return repository.findAll();
     }
 
-    public Project save(final Project toSave) {
-        return repository.save(toSave);
+    public Project save(final ProjectWriteModel toSave) {
+        return repository.save(toSave.toProject());
     }
 
     public GroupReadModel createGroup(LocalDateTime deadline, int projectId) {
@@ -49,7 +50,7 @@ public class ProjectService {
                                             }
                                     ).collect(Collectors.toSet())
                     );
-                    return taskGroupService.createGroup(targetGroup);
+                    return taskGroupService.createGroup(targetGroup, project);
                 }).orElseThrow(() -> new IllegalArgumentException("Project with given id not found"));
         return result;
     }
