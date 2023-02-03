@@ -9,4 +9,4 @@ spring:
   jpa:
     hibernate:
       ddl-auto: validate
-task.allowMultipleTaskFromTemplate: false
+task.template.allowMultipleTasks: false
