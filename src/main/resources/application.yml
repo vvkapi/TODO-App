@@ -10,3 +10,9 @@ spring:
     hibernate:
       ddl-auto: validate
 task.template.allowMultipleTasks: false
+management:
+  endpoints:
+    web:
+      base-path: /status
+      exposure:
+        include: '*'
