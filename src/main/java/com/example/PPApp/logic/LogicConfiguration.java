@@ -2,7 +2,6 @@ package com.example.PPApp.logic;
 
 import com.example.PPApp.TaskConfigurationProperties;
 import com.example.PPApp.model.ProjectRepository;
-import com.example.PPApp.model.TaskGroup;
 import com.example.PPApp.model.TaskGroupRepository;
 import com.example.PPApp.model.TaskRepository;
 import org.springframework.context.annotation.Bean;
@@ -13,8 +12,9 @@ public class LogicConfiguration {
     @Bean
     ProjectService service(final ProjectRepository repository,
                            final TaskGroupRepository taskGroupRepository,
+                           final TaskGroupService taskGroupService,
                            final TaskConfigurationProperties config) {
-        return new ProjectService(repository, taskGroupRepository, config);
+        return new ProjectService(repository, taskGroupRepository, taskGroupService, config);
     }
 
     @Bean

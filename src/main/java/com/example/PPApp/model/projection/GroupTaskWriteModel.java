@@ -1,7 +1,7 @@
 package com.example.PPApp.model.projection;
 
 import com.example.PPApp.model.Task;
-import com.example.PPApp.model.TaskGroupRepository;
+import com.example.PPApp.model.TaskGroup;
 
 import java.time.LocalDateTime;
 
@@ -25,7 +25,8 @@ public class GroupTaskWriteModel {
         this.deadline = deadline;
     }
 
-    public Task toTask() {
-        return new Task(description, deadline);
+    public Task toTask(final TaskGroup group) {
+
+        return new Task(description, deadline, group);
     }
 }
