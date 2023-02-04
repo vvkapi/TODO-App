@@ -1,7 +1,9 @@
 package com.example.PPApp.logic;
 
 import com.example.PPApp.TaskConfigurationProperties;
-import com.example.PPApp.model.*;
+import com.example.PPApp.model.Project;
+import com.example.PPApp.model.ProjectRepository;
+import com.example.PPApp.model.TaskGroupRepository;
 import com.example.PPApp.model.projection.GroupReadModel;
 import com.example.PPApp.model.projection.GroupTaskWriteModel;
 import com.example.PPApp.model.projection.GroupWriteModel;
@@ -12,10 +14,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ProjectService {
-    private ProjectRepository repository;
-    private TaskGroupRepository taskGroupRepository;
-    private TaskGroupService taskGroupService;
-    private TaskConfigurationProperties config;
+    private final ProjectRepository repository;
+    private final TaskGroupRepository taskGroupRepository;
+    private final TaskGroupService taskGroupService;
+    private final TaskConfigurationProperties config;
 
     public ProjectService(final ProjectRepository repository, final TaskGroupRepository taskGroupRepository, final TaskGroupService taskGroupService, final TaskConfigurationProperties config) {
         this.repository = repository;

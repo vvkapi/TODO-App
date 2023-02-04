@@ -1,8 +1,6 @@
 package com.example.PPApp.controller;
 
 import com.example.PPApp.TaskConfigurationProperties;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,11 +14,11 @@ class InfoController {
         this.prop = prop;
     }
 
-    private DataSourceProperties dataSource;
-    private TaskConfigurationProperties prop;
+    private final DataSourceProperties dataSource;
+    private final TaskConfigurationProperties prop;
 
     @GetMapping("/url")
-    String url(){
+    String url() {
         return dataSource.getUrl();
     }
 

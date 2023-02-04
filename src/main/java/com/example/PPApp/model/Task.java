@@ -11,17 +11,17 @@ public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @NotBlank(message="Tasks description can't be empty!")
+    @NotBlank(message = "Tasks description can't be empty!")
     private String description;
     private boolean done;
     private LocalDateTime deadline;
     @Embedded
-    private Audit audit = new Audit();
+    private final Audit audit = new Audit();
     @ManyToOne
     @JoinColumn(name = "task_group_id")
     private TaskGroup group;
 
-    Task(){
+    Task() {
     }
 
     public Task(String description, LocalDateTime deadline) {
@@ -31,7 +31,7 @@ public class Task {
     public Task(String description, LocalDateTime deadline, TaskGroup group) {
         this.description = description;
         this.deadline = deadline;
-        if(group != null) {
+        if (group != null) {
             this.group = group;
         }
     }
@@ -56,11 +56,17 @@ public class Task {
         return done;
     }
 
-    public void setDone(boolean done) { this.done = done; }
+    public void setDone(boolean done) {
+        this.done = done;
+    }
 
-    public LocalDateTime getDeadline() { return deadline; }
+    public LocalDateTime getDeadline() {
+        return deadline;
+    }
 
-    void setDeadline(final LocalDateTime deadline) { this.deadline = deadline; }
+    void setDeadline(final LocalDateTime deadline) {
+        this.deadline = deadline;
+    }
 
     TaskGroup getGroup() {
         return group;
@@ -71,7 +77,7 @@ public class Task {
     }
 
     public void updateFrom(final Task source) {
-        description = source.description;;
+        description = source.description;
         done = source.done;
         deadline = source.deadline;
         group = source.group;

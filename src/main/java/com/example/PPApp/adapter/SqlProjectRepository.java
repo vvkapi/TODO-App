@@ -2,8 +2,6 @@ package com.example.PPApp.adapter;
 
 import com.example.PPApp.model.Project;
 import com.example.PPApp.model.ProjectRepository;
-import com.example.PPApp.model.TaskGroup;
-import com.example.PPApp.model.TaskGroupRepository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

@@ -16,3 +16,8 @@ management:
       base-path: /status
       exposure:
         include: '*'
+keycloack:
+  auth-server-url: 'http://localhost:8180/auth0'
+  realm: 'PP-App'
+  resource: 'pp-app-client'
+  public-client: true

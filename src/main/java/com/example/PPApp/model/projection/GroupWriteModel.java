@@ -4,15 +4,13 @@ import com.example.PPApp.model.Project;
 import com.example.PPApp.model.TaskGroup;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 public class GroupWriteModel {
-    @NotBlank(message="Tasks group's description can't be empty!")
+    @NotBlank(message = "Tasks group's description can't be empty!")
     private String description;
     @Valid
     private List<GroupTaskWriteModel> tasks = new ArrayList<>();

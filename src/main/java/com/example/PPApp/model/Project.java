@@ -11,7 +11,7 @@ public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @NotBlank(message="Project's description can't be empty!")
+    @NotBlank(message = "Project's description can't be empty!")
     private String description;
     @OneToMany(mappedBy = "project")
     private Set<TaskGroup> groups;

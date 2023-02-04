@@ -2,18 +2,16 @@ package com.example.PPApp.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import org.springframework.cglib.core.Local;
 
-import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
 @Table(name = "task_groups")
-public class TaskGroup{
+public class TaskGroup {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @NotBlank(message="Tasks group's description can't be empty!")
+    @NotBlank(message = "Tasks group's description can't be empty!")
     private String description;
     private boolean done;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "group")
@@ -22,7 +20,7 @@ public class TaskGroup{
     @JoinColumn(name = "project_id")
     private Project project;
 
-    public TaskGroup(){
+    public TaskGroup() {
     }
 
     public int getId() {
@@ -45,11 +43,17 @@ public class TaskGroup{
         return done;
     }
 
-    public void setDone(boolean done) { this.done = done; }
+    public void setDone(boolean done) {
+        this.done = done;
+    }
 
-    public Set<Task> getTasks() { return tasks; }
+    public Set<Task> getTasks() {
+        return tasks;
+    }
 
-    public void setTasks(final Set<Task> tasks) { this.tasks = tasks; }
+    public void setTasks(final Set<Task> tasks) {
+        this.tasks = tasks;
+    }
 
     public Project getProject() {
         return project;

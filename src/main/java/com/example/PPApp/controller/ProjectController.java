@@ -33,7 +33,7 @@ class ProjectController {
     String addProject(
             @ModelAttribute("project") @Valid ProjectWriteModel current,
             BindingResult bindingResult,
-            Model model){
+            Model model) {
         if (bindingResult.hasErrors()) {
             return "projects";
         }

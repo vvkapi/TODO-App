@@ -1,7 +1,6 @@
 package com.example.PPApp.controller;
 
 import com.example.PPApp.logic.TaskGroupService;
-import com.example.PPApp.model.ProjectStep;
 import com.example.PPApp.model.Task;
 import com.example.PPApp.model.TaskRepository;
 import com.example.PPApp.model.projection.GroupReadModel;
@@ -36,14 +35,14 @@ class TaskGroupController {
     @GetMapping(produces = MediaType.TEXT_HTML_VALUE)
     String showGroups(Model model) {
         model.addAttribute("group", new GroupWriteModel());
-            return "groups";
+        return "groups";
     }
 
     @PostMapping(produces = MediaType.TEXT_HTML_VALUE, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     String addGroup(
             @ModelAttribute("group") @Valid GroupWriteModel current,
             BindingResult bindingResult,
-            Model model){
+            Model model) {
         if (bindingResult.hasErrors()) {
             return "groups";
         }
@@ -65,12 +64,12 @@ class TaskGroupController {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<GroupReadModel> createGroup(@RequestBody @Valid GroupWriteModel toCreate) {
         GroupReadModel result = service.createGroup(toCreate);
-        return ResponseEntity.created(URI.create("/"+ result.getId())).body(result);
+        return ResponseEntity.created(URI.create("/" + result.getId())).body(result);
     }
 
     @ResponseBody
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    ResponseEntity<List<GroupReadModel>>readAllGroups() {
+    ResponseEntity<List<GroupReadModel>> readAllGroups() {
         return ResponseEntity.ok(service.readlAll());
     }
 
@@ -83,13 +82,13 @@ class TaskGroupController {
     @ResponseBody
     @Transactional
     @PatchMapping("/{id}")
-    public ResponseEntity<?>toggleGroup(@PathVariable int id) {
+    public ResponseEntity<?> toggleGroup(@PathVariable int id) {
         service.toggleGroup(id);
         return ResponseEntity.noContent().build();
     }
 
     @ExceptionHandler(IllegalArgumentException.class)
-    ResponseEntity<String> handleIllegalArgumentException(IllegalArgumentException e){
+    ResponseEntity<String> handleIllegalArgumentException(IllegalArgumentException e) {
         return ResponseEntity.notFound().build();
     }
 

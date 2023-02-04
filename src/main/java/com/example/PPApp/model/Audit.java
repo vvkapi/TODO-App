@@ -17,7 +17,7 @@ class Audit {
     }
 
     @PreUpdate
-    void PreMerge(){
+    void PreMerge() {
         updatedOn = LocalDateTime.now();
     }
 }
